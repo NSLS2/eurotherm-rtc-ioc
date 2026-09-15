@@ -1,0 +1,95 @@
+##### LOOP SETPOINT #####
+
+record(ao, "$(P)$(R)LOOP:SP1") {
+    field(DTYP, "asynInt32")
+    field(DESC, "Setpoint 1")
+    field(OUT, "@asynMask($(PORT)_SP1 0 0xFFFF)")
+    field(EGU, "C")
+	field(DRVL, "0")
+	field(DRVH, "100")
+    field(LINR, "SLOPE")
+    field(ESLO, "0.01")
+    field(PREC, "2")
+	field(VAL,  $(SPVAL="20.0"))
+}
+
+
+record(ai, "$(P)$(R)LOOP:SP1_RB") {
+    field(DTYP, "asynInt32")
+    field(DESC, "Setpoint 1")
+    field(INP, "@asynMask($(PORT)_SP1_RB 0 16)MODBUS_DATA")
+    field(SCAN, "I/O Intr")
+    field(PREC, "2")
+    field(LINR, "SLOPE")
+    field(ESLO, "0.01")
+    field(EGU, "C")
+}
+
+##### LOOP PID #####
+
+
+record(ao, "$(P)$(R)LOOP:CH1_PROP_BAND") {
+    field(DTYP, "asynInt32")
+    field(DESC, "Proportional Band")
+    field(OUT, "@asynMask($(PORT)_CH1_PROP_BAND 0 0xFFFF)")
+	field(EGU,  "C")
+	field(DRVL, "0")
+	field(DRVH, "999.9")
+	field(LINR, "SLOPE")
+	field(ESLO, "0.1")
+	field(PREC, "1")
+	field(VAL,  $(PVAL="9.0"))
+}
+
+record(ai, "$(P)$(R)LOOP:CH1_PROP_BAND_RB") {
+    field(DTYP, "asynInt32")
+    field(DESC, "Proportional Band")
+    field(INP, "@asynMask($(PORT)_CH1_PROP_BAND_RB 0 16)MODBUS_DATA")
+    field(SCAN, "I/O Intr")
+	field(EGU,  "C")
+	field(LINR, "SLOPE")
+	field(ESLO, "0.1")
+	field(PREC, "1")
+}
+
+record(ao, "$(P)$(R)LOOP:INTEGRAL_TIME") {
+    field(DTYP, "asynInt32")
+    field(DESC, "Integral Time")
+    field(OUT, "@asynMask($(PORT)_INTEGRAL_TIME 0 0xFFFF)")
+	field(EGU,  "Seconds")
+	field(DRVL, "0")
+	field(DRVH, "3999")
+	field(VAL,  $(IVAL="90"))
+}
+
+record(ai, "$(P)$(R)LOOP:INTEGRAL_TIME_RB") {
+    field(DTYP, "asynInt32")
+    field(DESC, "Integral Time")
+    field(INP, "@asynMask($(PORT)_INTEGRAL_TIME_RB 0 16)MODBUS_DATA")
+    field(SCAN, "I/O Intr")
+	field(EGU,  "Seconds")
+}
+
+record(ao, "$(P)$(R)LOOP:DERIVATIVE_TIME") {
+    field(DTYP, "asynInt32")
+    field(DESC, "Derivative Time")
+    field(OUT, "@asynMask($(PORT)_DERIVATIVE_TIME 0 0xFFFF)")
+	field(EGU,  "Seconds")
+	field(DRVL, "0")
+	field(DRVH, "399.9")
+	field(LINR, "SLOPE")
+	field(ESLO, "0.1")
+	field(PREC, "1")
+	field(VAL,  $(DVAL="0"))
+}
+
+record(ai, "$(P)$(R)LOOP:DERIVATIVE_TIME_RB") {
+    field(DTYP, "asynInt32")
+    field(DESC, "Derivative Time")
+    field(INP, "@asynMask($(PORT)_DERIVATIVE_TIME_RB 0 16)MODBUS_DATA")
+    field(SCAN, "I/O Intr")
+	field(EGU,  "Seconds")
+	field(LINR, "SLOPE")
+	field(ESLO, "0.1")
+	field(PREC, "1")
+}

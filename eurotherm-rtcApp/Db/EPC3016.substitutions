@@ -1,0 +1,34 @@
+# AI
+file "AI.template" { pattern
+{ P,      R,        PORT,          }
+{ $(Sys), "$(Dev)", $(ASYNPORT)_AI }
+}
+
+# IO
+file "IO.template" { pattern
+{ P,      R,        PORT,           }
+{ $(Sys), "$(Dev)", $(ASYNPORT)_IO1 }
+}
+
+# LOOP
+file "LOOP.template" { pattern
+{ P,      R,        PORT,            }
+{ $(Sys), "$(Dev)", $(ASYNPORT)_LOOP }
+}
+
+# ALARMS
+file "ALARM.template" { pattern
+{ P,      R,        AL, PORT,           }
+{ $(Sys), "$(Dev)", 1,  $(ASYNPORT)_AL1 }
+{ $(Sys), "$(Dev)", 2,  $(ASYNPORT)_AL2 }
+{ $(Sys), "$(Dev)", 3,  $(ASYNPORT)_AL3 }
+{ $(Sys), "$(Dev)", 4,  $(ASYNPORT)_AL4 }
+{ $(Sys), "$(Dev)", 5,  $(ASYNPORT)_AL5 }
+{ $(Sys), "$(Dev)", 6,  $(ASYNPORT)_AL6 }
+}
+
+# SYSTEM / ACCESS
+file "SYSTEM.template" { pattern
+{ P,      R,           PORT,    }
+{ $(Sys), "$(Dev)", $(ASYNPORT) }
+}

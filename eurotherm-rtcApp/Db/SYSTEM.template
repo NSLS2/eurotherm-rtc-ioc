@@ -1,0 +1,46 @@
+# SYSTEM.template
+# Eurotherm RTC EPC3016 System Information Records
+# Ordered to match EPC3016_modbus.cmd Instrument section
+
+record(stringout, "$(P)$(R)ACCESS:PASSWORD") {
+    field(DTYP, "asynOctetWrite")
+    field(DESC, "Access password")
+    field(OUT, "@asyn($(PORT)_ACCESS_PASSWORD,0)MODBUS_DATA")
+    field(VAL, "eurothermEPC3016")
+}
+
+record(seq, "$(P)$(R)ACCESS:ENTER_CONFIG") {
+    field(DESC, "Send password then set Config mode")
+    field(SELM, "All")
+    field(DO1, "1")
+    field(LNK1, "$(P)$(R)ACCESS:PASSWORD.PROC PP")
+    field(DLY2, "1.0")
+    field(DOL2, "2")
+    field(LNK2, "$(P)$(R)SYSTEM:INSTRUMENT_MODE PP")
+}
+
+record(mbbo, "$(P)$(R)SYSTEM:INSTRUMENT_MODE") {
+    field(DTYP, "asynInt32")
+    field(DESC, "Instrument mode")
+    field(OUT, "@asynMask($(PORT)_INSTRUMENT_MODE 0 0xFFFF)")
+	field(ZRVL, "0")
+	field(ONVL, "1")
+	field(TWVL, "2")
+    field(ZRST, "Run")
+    field(ONST, "Standby")
+    field(TWST, "Config")
+}
+
+record(mbbi, "$(P)$(R)SYSTEM:INSTRUMENT_MODE_RB") {
+    field(DTYP, "asynInt32")
+    field(DESC, "Instrument mode readback")
+    field(INP, "@asynMask($(PORT)_INSTRUMENT_MODE_RB 0 16)MODBUS_DATA")
+    field(SCAN, "I/O Intr")
+	field(ZRVL, "0")
+	field(ONVL, "1")
+	field(TWVL, "2")
+    field(ZRST, "Run")
+    field(ONST, "Standby")
+    field(TWST, "Config")
+}
+
