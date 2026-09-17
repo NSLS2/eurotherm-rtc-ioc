@@ -1,6 +1,6 @@
-#!../../bin/linux-x86_64/eurotherm-rtc
+#!../../bin/linux-x86_64/eurotherm_rtc
 
-#- You may have to change eurotherm-rtc to something else
+#- You may have to change eurotherm_rtc to something else
 #- everywhere it appears in this file
 
 < envPaths
@@ -12,7 +12,7 @@ epicsEnvSet("IOC_PREFIX","$(SYS){IOC:RTC}")
 
 
 ## Register all support components
-dbLoadDatabase("$(TOP)/dbd/eurotherm-rtc.dbd",0,0)
+dbLoadDatabase("$(TOP)/dbd/eurotherm_rtc.dbd",0,0)
 eurotherm_rtc_registerRecordDeviceDriver(pdbbase) 
 
 # Controller-specific variables
