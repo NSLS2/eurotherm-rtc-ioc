@@ -1,4 +1,4 @@
-/* eurotherm-rtcMain.cpp */
+/* eurotherm_rtcMain.cpp */
 /* Author:  Marty Kraimer Date:    17MAR2000 */
 
 #include <stddef.h>

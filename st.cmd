@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cd iocBoot/ioceurotherm-rtc && ./st.cmd
+cd iocBoot/ioceurotherm_rtc && ./st.cmd
